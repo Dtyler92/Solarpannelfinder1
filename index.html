@@ -469,7 +469,7 @@
     <a href="#lead">Get a free estimate</a>
   </div>
 
-  <<script>
+<script>
 const scriptURL = "https://script.google.com/macros/s/AKfycbyikqc2IHLpPse4fZLpxV9bEZVXGRPAWrILM1CHmF4SlFC5BJkfE6k9FYPLaG1hf_GL/exec";
 
 const form = document.getElementById("leadForm");
@@ -500,15 +500,16 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
+    // Try to read JSON if allowed; if not, still succeed on 200-299.
+    let data = null;
+    try { data = await res.json(); } catch (_) {}
 
-    if (res.ok && data.result === "success") {
+    if (res.ok && (!data || data.result === "success")) {
       thanks.style.display = "block";
       form.reset();
     } else {
       throw new Error("Bad response");
     }
-
   } catch (err) {
     errorBox.style.display = "block";
   } finally {
