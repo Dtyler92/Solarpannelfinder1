@@ -469,60 +469,51 @@
     <a href="#lead">Get a free estimate</a>
   </div>
 
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyikqc2IHLpPse4fZLpxV9bEZVXGRPAWrILM1CHmF4SlFC5BJkfE6k9FYPLaG1hf_GL/exec";
+  <<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyikqc2IHLpPse4fZLpxV9bEZVXGRPAWrILM1CHmF4SlFC5BJkfE6k9FYPLaG1hf_GL/exec";
 
-    const form = document.getElementById("leadForm");
-    const thanks = document.getElementById("thanks");
-    const errorBox = document.getElementById("errorBox");
-    const submitBtn = document.getElementById("submitBtn");
+const form = document.getElementById("leadForm");
+const thanks = document.getElementById("thanks");
+const errorBox = document.getElementById("errorBox");
+const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      thanks.style.display = "none";
-      errorBox.style.display = "none";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  thanks.style.display = "none";
+  errorBox.style.display = "none";
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
 
-      const payload = {
-        name: document.getElementById("name").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        address: document.getElementById("address").value.trim(),
-        zip: document.getElementById("zip").value.trim(),
-        note: document.getElementById("note").value.trim()
-      };
+  const payload = {
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    zip: document.getElementById("zip").value.trim(),
+    note: document.getElementById("note").value.trim()
+  };
 
-      try {
-        // IMPORTANT: Send as plain text to avoid CORS preflight (no custom headers)
-        const res = await fetch(scriptURL, {
-          method: "POST",
-          body: JSON.stringify(payload)
-        });
-
-        // Some deployments return JSON you can read…
-        // If parsing fails due to CORS, we’ll fall back.
-        let data = null;
-        try { data = await res.json(); } catch (_) {}
-
-        if ((res && res.ok && data && data.result === "success") || (res && res.ok && !data)) {
-          thanks.style.display = "block";
-          form.reset();
-        } else if (res && res.type === "opaque") {
-          // If you later change to no-cors, response becomes opaque; treat as sent.
-          thanks.style.display = "block";
-          form.reset();
-        } else {
-          throw new Error("Bad response");
-        }
-      } catch (err) {
-        errorBox.style.display = "block";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send my info";
-      }
+  try {
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(payload)
     });
-  </script>
-</body>
-</html>
+
+    const data = await res.json();
+
+    if (res.ok && data.result === "success") {
+      thanks.style.display = "block";
+      form.reset();
+    } else {
+      throw new Error("Bad response");
+    }
+
+  } catch (err) {
+    errorBox.style.display = "block";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send my info";
+  }
+});
+</script>
