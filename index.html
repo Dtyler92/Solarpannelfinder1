@@ -469,7 +469,7 @@
     <a href="#lead">Get a free estimate</a>
   </div>
 
-  <script>
+<script>
 const scriptURL = "https://script.google.com/macros/s/AKfycbyikqc2IHLpPse4fZLpxV9bEZVXGRPAWrILM1CHmF4SlFC5BJkfE6k9FYPLaG1hf_GL/exec";
 
 const form = document.getElementById("leadForm");
@@ -495,22 +495,22 @@ form.addEventListener("submit", async (e) => {
   });
 
   try {
-    const res = await fetch(scriptURL, {
-      method: "POST",
-      body: payload
-    });
+    const res = await fetch(scriptURL, { method: "POST", body: payload });
 
-    // Apps Script should return JSON; but if the browser blocks reading it, still succeed on ok
-    let data = null;
-    try { data = await res.json(); } catch (_) {}
-
-    if (res.ok && (!data || data.result === "success")) {
+    // Even if the browser blocks reading the response, a 200-299 means the row should be added.
+    if (res.ok || res.type === "opaque") {
       thanks.style.display = "block";
       form.reset();
-    } else {
-      throw new Error("Bad response");
+      return;
     }
+
+    // If it's not ok, try to read the error message (sometimes allowed)
+    let msg = "";
+    try { msg = await res.text(); } catch (_) {}
+    throw new Error(msg || "Request failed");
+
   } catch (err) {
+    console.log("Lead submit error:", err);
     errorBox.style.display = "block";
   } finally {
     submitBtn.disabled = false;
