@@ -31,7 +31,6 @@
     }
     a{color:inherit}
     .wrap{max-width:1120px;margin:0 auto;padding:26px}
-
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:14px;
       padding:6px 0 18px;
@@ -302,9 +301,10 @@
 
         <form id="leadForm">
           <!-- Honeypot field (spam trap): humans won't fill this -->
-<div style="position:absolute; left:-5000px; opacity:0; height:0; overflow:hidden;">
-  <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
-</div>
+          <div style="position:absolute; left:-5000px; opacity:0; height:0; overflow:hidden;">
+            <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
           <label for="name">Full Name</label>
           <input id="name" name="name" placeholder="John Smith" required />
 
@@ -337,7 +337,7 @@
 
           <div id="thanks" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(53,208,186,.10);">
             <strong>Thanks — we received your request ✅</strong>
-            <div style="color:var(--muted);margin-top:4px;">We’ll reach out to confirm details and answer questions.</div>
+            <div id="thanksMsg" style="color:var(--muted);margin-top:4px;"></div>
           </div>
 
           <div id="errorBox" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid rgba(244,162,97,.5);background:rgba(244,162,97,.12);">
@@ -351,117 +351,118 @@
         </form>
       </div>
     </div>
-<div class="section">
-  <div class="card mini" id="about">
-    <div class="icon" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M4 22V2h10v20" stroke="currentColor" stroke-width="2"/>
-        <path d="M14 9h6v13" stroke="currentColor" stroke-width="2"/>
-        <path d="M7 6h4M7 10h4M7 14h4M7 18h4" stroke="currentColor" stroke-width="2"/>
-      </svg>
-    </div>
-    <h3>Palmetto Solar overview</h3>
-    <p>
-      Palmetto Solar is an established solar company with regional presence and local support.
-      They are vertically integrated — meaning the work is handled directly rather than subcontracted out.
-    </p>
-  </div>
 
-  <div class="card mini">
-    <div class="icon" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z" stroke="currentColor" stroke-width="2"/>
-      </svg>
-    </div>
-    <h3>No-pressure process</h3>
-    <p>
-      We can do a quick virtual call or a short visit. If we schedule a brief meeting, it helps to have all decision-makers present
-      so everyone’s aligned and questions get answered once.
-    </p>
-  </div>
+    <div class="section">
+      <div class="card mini" id="about">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 22V2h10v20" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 9h6v13" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 6h4M7 10h4M7 14h4M7 18h4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Palmetto Solar overview</h3>
+        <p>
+          Palmetto Solar is an established solar company with regional presence and local support.
+          They are vertically integrated — meaning the work is handled directly rather than subcontracted out.
+        </p>
+      </div>
 
-  <div class="card mini">
-    <div class="icon" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M21 12a9 9 0 1 1-2.6-6.4" stroke="currentColor" stroke-width="2"/>
-        <path d="M21 3v7h-7" stroke="currentColor" stroke-width="2"/>
-      </svg>
-    </div>
-    <h3>Credits & rollover</h3>
-    <p>
-      Your system generates power during the day. Excess energy can be sent to the grid for credits,
-      which you can use later when production is lower. Unused credits can roll over.
-    </p>
-  </div>
-</div>
+      <div class="card mini">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>No-pressure process</h3>
+        <p>
+          We can do a quick virtual call or a short visit. If we schedule a brief meeting, it helps to have all decision-makers present
+          so everyone’s aligned and questions get answered once.
+        </p>
+      </div>
 
-<div class="content">
-  <div class="card" id="how">
-    <h2>How the program works</h2>
-    <p>
-      Solar panels generate electricity primarily during daylight hours. When your home produces more than it uses,
-      that excess can be exported to the grid and tracked as credits. Those credits can offset usage when the system
-      is producing less — evenings, cloudy periods, or higher-usage seasons.
-    </p>
-
-    <div class="callout">
-      <strong>Simple idea:</strong> produce in the day, use credits later — with a smoother bill over time.
+      <div class="card mini">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12a9 9 0 1 1-2.6-6.4" stroke="currentColor" stroke-width="2"/>
+            <path d="M21 3v7h-7" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Credits & rollover</h3>
+        <p>
+          Your system generates power during the day. Excess energy can be sent to the grid for credits,
+          which you can use later when production is lower. Unused credits can roll over.
+        </p>
+      </div>
     </div>
 
-    <h2 style="margin-top:14px;">Cost structure</h2>
-    <p>
-      Many homeowners explore options with <strong>no upfront cost</strong>.
-      Instead of paying a utility rate that can change over time, you may pay a <strong>lower, fixed rate</strong> for
-      the electricity your panels produce — adding predictability and protection against future changes.
-    </p>
-  </div>
+    <div class="content">
+      <div class="card" id="how">
+        <h2>How the program works</h2>
+        <p>
+          Solar panels generate electricity primarily during daylight hours. When your home produces more than it uses,
+          that excess can be exported to the grid and tracked as credits. Those credits can offset usage when the system
+          is producing less — evenings, cloudy periods, or higher-usage seasons.
+        </p>
 
-  <div class="card" id="benefits">
-    <h2>Key benefits</h2>
-    <ul class="bullets" style="margin-top:0;">
-      <li><span class="check">✓</span><span>Protection from rising utility rates and long-term budget certainty</span></li>
-      <li><span class="check">✓</span><span>Immediate savings potential with no upfront investment options</span></li>
-      <li><span class="check">✓</span><span>No traditional loan or lien required for certain program types</span></li>
-      <li><span class="check">✓</span><span>Soft credit check may be used mainly to confirm payment history</span></li>
-      <li><span class="check">✓</span><span>Ability to add battery storage later if grid reliability becomes a concern</span></li>
-      <li><span class="check">✓</span><span>Long-term equipment coverage (panels, wiring, inverter) depending on plan</span></li>
-    </ul>
+        <div class="callout">
+          <strong>Simple idea:</strong> produce in the day, use credits later — with a smoother bill over time.
+        </div>
 
-    <div class="callout" style="margin-top:12px;">
-      Utility “price to compare” generation rates have trended upward over the past several years.
-      While that’s not the entire bill, it’s a meaningful driver — and it changes with market and regulatory conditions.
+        <h2 style="margin-top:14px;">Cost structure</h2>
+        <p>
+          Many homeowners explore options with <strong>no upfront cost</strong>.
+          Instead of paying a utility rate that can change over time, you may pay a <strong>lower, fixed rate</strong> for
+          the electricity your panels produce — adding predictability and protection against future changes.
+        </p>
+      </div>
+
+      <div class="card" id="benefits">
+        <h2>Key benefits</h2>
+        <ul class="bullets" style="margin-top:0;">
+          <li><span class="check">✓</span><span>Protection from rising utility rates and long-term budget certainty</span></li>
+          <li><span class="check">✓</span><span>Immediate savings potential with no upfront investment options</span></li>
+          <li><span class="check">✓</span><span>No traditional loan or lien required for certain program types</span></li>
+          <li><span class="check">✓</span><span>Soft credit check may be used mainly to confirm payment history</span></li>
+          <li><span class="check">✓</span><span>Ability to add battery storage later if grid reliability becomes a concern</span></li>
+          <li><span class="check">✓</span><span>Long-term equipment coverage (panels, wiring, inverter) depending on plan</span></li>
+        </ul>
+
+        <div class="callout" style="margin-top:12px;">
+          Utility “price to compare” generation rates have trended upward over the past several years.
+          While that’s not the entire bill, it’s a meaningful driver — and it changes with market and regulatory conditions.
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);">
+          We can walk through a practical comparison using your usage and recent bills during a short consult.
+        </p>
+      </div>
     </div>
 
-    <p style="margin-top:12px;color:var(--muted);">
-      We can walk through a practical comparison using your usage and recent bills during a short consult.
-    </p>
-  </div>
-</div>
+    <div class="card faq">
+      <h2 style="margin:0 0 10px;">Common questions</h2>
 
-<div class="card faq">
-  <h2 style="margin:0 0 10px;">Common questions</h2>
+      <details>
+        <summary>Is this a contract?</summary>
+        <p>No. This is simply a request for information and a consultation.</p>
+      </details>
 
-  <details>
-    <summary>Is this a contract?</summary>
-    <p>No. This is simply a request for information and a consultation.</p>
-  </details>
+      <details>
+        <summary>Do you subcontract the install?</summary>
+        <p>Palmetto Solar is vertically integrated, meaning installation and workmanship are handled directly under their process and coverage.</p>
+      </details>
 
-  <details>
-    <summary>Do you subcontract the install?</summary>
-    <p>Palmetto Solar is vertically integrated, meaning installation and workmanship are handled directly under their process and coverage.</p>
-  </details>
+      <details>
+        <summary>What if I’m not sure solar makes sense?</summary>
+        <p>That’s the point of the consult. If the numbers don’t make sense for your home, we’ll tell you.</p>
+      </details>
 
-  <details>
-    <summary>What if I’m not sure solar makes sense?</summary>
-    <p>That’s the point of the consult. If the numbers don’t make sense for your home, we’ll tell you.</p>
-  </details>
+      <details>
+        <summary>Should spouses/decision makers be present?</summary>
+        <p>It helps. If we schedule a short call or visit, having everyone present keeps things aligned and avoids repeating the same answers later.</p>
+      </details>
+    </div>
 
-  <details>
-    <summary>Should spouses/decision makers be present?</summary>
-    <p>It helps. If we schedule a short call or visit, having everyone present keeps things aligned and avoids repeating the same answers later.</p>
-  </details>
-</div>
-    
     <footer>
       © 2026 Tourbillion LLC. Partnered with Palmetto Solar. Savings vary by home, utility rates, system design, and incentives.
       This page is for information and lead generation only.
@@ -472,68 +473,77 @@
     <a href="#lead">Get a free estimate</a>
   </div>
 
-<script>
-  // ✅ Paste your *actual* Apps Script Web App /exec URL here:
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwgJ1czBkad75OXkxhkXd401qD2h5IRkfkOzVSQWA8JfIlcCFHXYquHUJ5AdJ_S_JUI/exec";
+  <script>
+    // ✅ Your Apps Script Web App /exec URL:
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwgJ1czBkad75OXkxhkXd401qD2h5IRkfkOzVSQWA8JfIlcCFHXYquHUJ5AdJ_S_JUI/exec";
 
-  const form = document.getElementById("leadForm");
-  const thanks = document.getElementById("thanks");
-  const errorBox = document.getElementById("errorBox");
-  const submitBtn = document.getElementById("submitBtn");
-  const errorMsgEl = document.querySelector("#errorBox div");
+    const form = document.getElementById("leadForm");
+    const thanks = document.getElementById("thanks");
+    const thanksMsg = document.getElementById("thanksMsg");
+    const errorBox = document.getElementById("errorBox");
+    const submitBtn = document.getElementById("submitBtn");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    thanks.style.display = "none";
-    errorBox.style.display = "none";
-    errorMsgEl.innerHTML = `Please try again, or contact us directly:
-      <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
-      <a href="tel:+17176687720">717-668-7720</a>`;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending...";
-
-    const payload = new URLSearchParams({
-      website: document.getElementById("website").value.trim(), // <-- COMMA here
-      name: document.getElementById("name").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      address: document.getElementById("address").value.trim(),
-      zip: document.getElementById("zip").value.trim(),
-      note: document.getElementById("note").value.trim()
-    });
-
-    try {
-      const res = await fetch(scriptURL, { method: "POST", body: payload });
-      const text = await res.text();
-
-      // If Google returned HTML, it's almost always permissions/deployment.
-      const t = text.trim();
-      if (t.startsWith("<!DOCTYPE") || t.startsWith("<html")) {
-        throw new Error("Apps Script returned an HTML page. Fix deployment: Execute as 'Me' + access 'Anyone', then redeploy.");
-      }
-
-      let data = null;
-      try { data = JSON.parse(text); } catch (_) {}
-
-      if (res.ok && data && data.result === "success") {
-        thanks.style.display = "block";
-        form.reset();
-        return;
-      }
-
-      throw new Error((data && data.message) ? data.message : ("Unexpected response: " + text));
-
-    } catch (err) {
-      console.log("Lead submit error:", err);
-      errorMsgEl.textContent = "Error: " + (err && err.message ? err.message : "Unknown error");
-      errorBox.style.display = "block";
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send my info";
+    function inEasternBusinessHours() {
+      // Determine hour in America/New_York without external libs
+      const fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false });
+      const hour = parseInt(fmt.format(new Date()), 10);
+      return hour >= 9 && hour < 21; // 9:00 to 20:59
     }
-  });
-</script>
-  
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      thanks.style.display = "none";
+      errorBox.style.display = "none";
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      const payload = new URLSearchParams({
+        website: document.getElementById("website").value.trim(), // honeypot
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        zip: document.getElementById("zip").value.trim(),
+        note: document.getElementById("note").value.trim()
+      });
+
+      try {
+        const res = await fetch(scriptURL, { method: "POST", body: payload });
+        const text = await res.text();
+
+        // If Google returned HTML, it's usually deployment/permissions
+        const t = text.trim();
+        if (t.startsWith("<!DOCTYPE") || t.startsWith("<html")) {
+          throw new Error("Submission failed due to script permissions. Please try again, or contact us directly.");
+        }
+
+        let data = null;
+        try { data = JSON.parse(text); } catch (_) {}
+
+        if (res.ok && data && data.result === "success") {
+          thanks.style.display = "block";
+
+          if (inEasternBusinessHours()) {
+            thanksMsg.textContent = "You’ll receive a call or text typically within the next 5 minutes (9am–9pm Mon-Sat Eastern Time).";
+          } else {
+            thanksMsg.textContent = "Thanks! We received your request. We’ll reach out during our next available hours (9am–9pm Mon-Sat Eastern).";
+          }
+
+          form.reset();
+          return;
+        }
+
+        throw new Error((data && data.message) ? data.message : "Unexpected response. Please try again.");
+
+      } catch (err) {
+        errorBox.style.display = "block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send my info";
+      }
+    });
+  </script>
+
 </body>
 </html>
