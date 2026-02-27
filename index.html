@@ -654,11 +654,6 @@ src="https://www.facebook.com/tr?id=873149912409063&ev=PageView&noscript=1"
   const YT_ID = "3u5DALLHZDI";
   const YT_EMBED_MUTED = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`;
 
-  // ✅ Require exactly 10 digits (strips formatting)
-function digitsOnlyPhone10(raw) {
-  const digits = (raw || "").replace(/\D/g, "");
-  return digits.length === 10 ? digits : null;
-}
   // -----------------------------
 // ✅ US Phone: strict validation + formatting
 // Rules enforced:
@@ -862,18 +857,6 @@ if (!isValidUS10(digits)) {
   return;
 }
 
-    // ✅ Validate phone number (must be 10 digits)
-    const phoneEl = document.getElementById("phone");
-    const phoneDigits = digitsOnlyPhone10(phoneEl.value);
-
-    if (!phoneDigits) {
-      errorBox.style.display = "block";
-      errorMsgEl.textContent = "Please enter a valid 10-digit phone number.";
-      phoneEl.focus();
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send my info";
-      return;
-    }
     // If bot filled honeypot, silently "succeed" but do nothing
     if (websiteTrap) {
       thanksMsg.textContent = "Thanks — we received your request ✅";
@@ -900,7 +883,7 @@ if (!isValidUS10(digits)) {
       website: websiteTrap,
       occupancy: occupancy,
       name: document.getElementById("name").value.trim(),
-      phone: Digits,
+      phone: digits,
       email: document.getElementById("email").value.trim(),
       address: document.getElementById("address").value.trim(),
       zip: document.getElementById("zip").value.trim(),
