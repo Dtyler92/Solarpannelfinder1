@@ -807,6 +807,8 @@ src="https://www.facebook.com/tr?id=873149912409063&ev=PageView&noscript=1"
           ? "We received your request ✅ You’ll receive a call or text within the next 5 minutes (9am–9pm Eastern)."
           : "We received your request ✅ We’ll contact you as soon as possible (typically 9am–9pm Eastern).";
 
+        // ✅ Meta conversion event (only on successful homeowner submission)
+      if (window.fbq) fbq('track', 'Lead');
         thanksMsg.textContent = fastMsg;
         thanks.style.display = "block";
         form.reset();
